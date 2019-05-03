@@ -9,6 +9,7 @@ from nltk.stem import LancasterStemmer
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import PunktSentenceTokenizer
 import nltk
+print('Downloading natural language toolkit packages as needed...\n')
 nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('punkt')
@@ -24,7 +25,7 @@ def importTidy(path_to_tweets, path_to_bias):
     json_files = [pos_json for pos_json in os.listdir(path_to_tweets) if pos_json.endswith('.json')]
 
     df=pd.DataFrame()
-    for file in json_files[0:4]:
+    for file in json_files:
         with open('data/tweets_tidy/'+file, 'r') as f:
             datastore = json.load(f)
             df_new = pd.DataFrame(datastore["tweets"])
